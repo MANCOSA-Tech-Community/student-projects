@@ -18,7 +18,7 @@ small, and it requires no paid GitHub features.
 ## How pull requests are reviewed
 
 1. A contributor opens a PR from their fork.
-2. **CI (`validate`) runs automatically** — folder naming, required files, schema
+2. **CI (`validate`) runs automatically** - folder naming, required files, schema
    validation, the `github`-matches-prefix check, and the 5 MB file-size gate. The
    PR cannot merge until this check passes.
 3. **CODEOWNERS** routes every PR to the maintainer for review automatically.
@@ -26,7 +26,7 @@ small, and it requires no paid GitHub features.
    or approves.
 5. All review conversations must be resolved before merge.
 6. The maintainer merges. On merge to `main`, the showcase site rebuilds and
-   deploys automatically — nothing is committed back to the repository.
+   deploys automatically - nothing is committed back to the repository.
 
 For **improvements to an existing project**, contributors open an issue first so
 the change can be discussed with the maintainer and, ideally, the original author
@@ -54,14 +54,14 @@ weakening the rules for anyone else, the ruleset grants a **bypass to the
 "Repository admin" role** (a role-based bypass, not a named-user exception). This
 lets the maintainer merge their own changes while **every contributor remains
 fully gated** by review and CI. As soon as a second maintainer exists, the bypass
-can be removed and normal two-person review applies — with no restructuring.
+can be removed and normal two-person review applies - with no restructuring.
 
 ## Becoming a maintainer
 
 The model is intentionally easy to grow into. If you'd like to help maintain the
 project:
 
-1. Build a track record — submit good projects and helpful, well-scoped
+1. Build a track record - submit good projects and helpful, well-scoped
    improvements to others' work.
 2. Open an issue titled "Maintainer proposal: \<your-username\>" describing what
    you'd help with (reviews, triage, tooling, docs).

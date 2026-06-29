@@ -22,7 +22,7 @@ what makes it interesting.
 ## How to run
 
 ```bash
-# Clone, install, and run — give exact, copy-pasteable commands.
+# Clone, install, and run - give exact, copy-pasteable commands.
 git clone https://github.com/your-username/your-project.git
 cd your-project
 # install dependencies, then run
@@ -30,7 +30,7 @@ cd your-project
 
 ## Screenshots
 
-Add one or two screenshots or a GIF. Keep images small — remember the **5 MB
+Add one or two screenshots or a GIF. Keep images small - remember the **5 MB
 per-file** limit. For anything larger, link it instead of committing it.
 
 ![Screenshot description](./screenshot.png)
@@ -45,4 +45,4 @@ here and explain how to obtain them:
 
 ## Notes
 
-Anything else — known limitations, future ideas, acknowledgements, or credits.
+Anything else - known limitations, future ideas, acknowledgements, or credits.

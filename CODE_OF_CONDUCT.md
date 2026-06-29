@@ -2,7 +2,7 @@
 
 ## Our pledge
 
-We — members, contributors, and the maintainer of the MANCOSA Tech Community —
+We - members, contributors, and the maintainer of the MANCOSA Tech Community -
 pledge to make participation in this project a harassment-free experience for
 everyone, regardless of age, body size, visible or invisible disability,
 ethnicity, sex characteristics, gender identity and expression, level of
@@ -18,7 +18,7 @@ other's work.
 Examples of behaviour that contributes to a positive environment:
 
 - Giving and gracefully accepting constructive feedback on each other's projects.
-- Being respectful of differing skill levels — everyone here is learning.
+- Being respectful of differing skill levels - everyone here is learning.
 - Crediting others' work and respecting the intent of a project's original author.
 - Focusing on what is best for the community.
 - Showing empathy towards other community members.
@@ -28,7 +28,7 @@ Examples of unacceptable behaviour:
 - Harassment, insults, or derogatory comments, and personal or political attacks.
 - Trolling or deliberately disruptive behaviour.
 - Publishing others' private information without explicit permission.
-- Plagiarism — submitting someone else's work as your own.
+- Plagiarism - submitting someone else's work as your own.
 - Other conduct which could reasonably be considered inappropriate in a
   professional or academic setting.
 
@@ -42,8 +42,8 @@ requests that are not aligned with this Code of Conduct.
 
 ## Scope
 
-This Code of Conduct applies within all project spaces — issues, pull requests,
-discussions, and the contents of contributed projects — and when an individual is
+This Code of Conduct applies within all project spaces - issues, pull requests,
+discussions, and the contents of contributed projects - and when an individual is
 officially representing the community in public spaces.
 
 ## Reporting
@@ -59,12 +59,12 @@ privacy and security of anyone who reports an incident.
 
 The maintainer will follow these guidelines in determining consequences:
 
-1. **Correction** — A private warning and an explanation of why the behaviour was
+1. **Correction** - A private warning and an explanation of why the behaviour was
    inappropriate. A public apology may be requested.
-2. **Warning** — A warning with consequences for continued behaviour, including a
+2. **Warning** - A warning with consequences for continued behaviour, including a
    period of no interaction with the people involved.
-3. **Temporary ban** — A temporary ban from any interaction with the community.
-4. **Permanent ban** — A permanent ban from any interaction within the community.
+3. **Temporary ban** - A temporary ban from any interaction with the community.
+4. **Permanent ban** - A permanent ban from any interaction within the community.
 
 ## Attribution
 
