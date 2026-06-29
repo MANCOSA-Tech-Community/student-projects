@@ -8,12 +8,12 @@
 
 <p align="center">
   A student-run showcase of projects built by the MANCOSA tech community.<br>
-  Submit your own work or improve someone else's &mdash; all through pull requests.
+  Submit your own work or improve someone else's -; all through pull requests.
 </p>
 
 <p align="center">
-  <a href="https://mancosa-tech-community.github.io/student-projects/"><strong>Browse the live showcase &raquo;</strong></a>
-</p>
+    <a href="https://mancosa-tech-community.github.io/student-projects/"><strong>Visit the live site  </strong></a>
+  </p>
 
 <p align="center">
   <a href="https://github.com/MANCOSA-Tech-Community/student-projects/actions/workflows/validate.yml">
@@ -27,22 +27,34 @@
 <p align="center"><sub><strong>Student-run · not an official MANCOSA channel</strong></sub></p>
 
 ---
+## Explore the projects
 
-## What this is
+<img src="https://github.com/user-attachments/assets/5eec2c69-71ba-4377-b065-227aeb5df579" align="left" width="300" alt="MANCOSA Tech Community showcase on mobile">
 
-A shared, public home for projects built by MANCOSA students and alumni in tech &mdash;
-data science, machine learning, AI, software development, DevOps, and everything around it.
+### Every student project, in one place
 
-Every project lives in its own folder. You publish your work, browse and learn from
-everyone else's, and improve each other's projects the way professional software teams
-do: through reviewed pull requests. Each merged project also appears on the
-**[live showcase site](https://mancosa-tech-community.github.io/student-projects/)** &mdash;
-a real, public link you can put on your CV.
+A public, searchable directory of what MANCOSA students and alumni are building - and a real link you can put on your CV.
+
+&nbsp;&nbsp;•&nbsp; **Search & filter** by title, author, or tag<br>
+&nbsp;&nbsp;•&nbsp; **Every card links** straight to the source code<br>
+&nbsp;&nbsp;•&nbsp; **Merged projects appear automatically** - no manual updates<br>
+&nbsp;&nbsp;•&nbsp; **Works on any device**, including mobile (shown here)<br>
+&nbsp;&nbsp;•&nbsp; **Free and open** - anyone in the community can contribute
+
+<a href="https://mancosa-tech-community.github.io/student-projects/"><img src="https://img.shields.io/badge/Browse_the_showcase-0B5D3B?style=for-the-badge" alt="Browse the showcase"></a>
+<a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/Submit_your_project-9FE870?style=for-the-badge&logoColor=black" alt="Submit your project"></a>
+### What this is
+
+A shared, public home for projects built by MANCOSA students and alumni in tech - data science, machine learning, AI, software development, DevOps, and everything around it.
+
+Every project lives in its own folder. You publish your work, browse and learn from everyone else's, and improve each other's projects the way professional software teams do: **through reviewed pull requests** - the same workflow used in real software jobs. So contributing here isn't just sharing a project; it's hands-on practice with the tools and process employers expect.
+
+<br clear="left">
 
 ## Contribute
 
 Two ways in, both through a pull request. Full step-by-step commands are in
-**[CONTRIBUTING.md](CONTRIBUTING.md)** &mdash; the short version:
+**[CONTRIBUTING.md](CONTRIBUTING.md)** -; the short version:
 
 **Submit a new project**
 1. Fork this repo.
@@ -61,7 +73,7 @@ Two ways in, both through a pull request. Full step-by-step commands are in
 
 - **One folder per project**, named `<github-username>--<slug>` so two people never collide.
 - **No hand-edited project list.** The showcase index is generated automatically from
-  each project's `project.json` at build time &mdash; so contributors never fight over a shared file.
+  each project's `project.json` at build time -; so contributors never fight over a shared file.
 - **`main` is protected.** Every change lands via a reviewed PR that passes automated checks.
 
 ## Repository structure
