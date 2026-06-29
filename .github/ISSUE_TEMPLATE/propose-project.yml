@@ -1,0 +1,53 @@
+name: Propose a new project
+description: Tell us about a project you'd like to add to the showcase.
+title: "[Project] <your project title>"
+labels: ["new-project"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposing here is optional — you can also just open a pull request
+        directly (see [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md)). Use this
+        if you'd like feedback on scope or naming before you build.
+  - type: input
+    id: title
+    attributes:
+      label: Project title
+      placeholder: Spam Classifier
+    validations:
+      required: true
+  - type: input
+    id: github
+    attributes:
+      label: Your GitHub username
+      description: Your project folder will be named <username>--<slug>.
+      placeholder: jdoe
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - AI/ML
+        - Data Science
+        - Web/Mobile
+        - Automation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What does it do?
+      description: A short description — what it is, who it's for, what's interesting.
+    validations:
+      required: true
+  - type: input
+    id: links
+    attributes:
+      label: Links (optional)
+      description: Demo, source repo, or a short video.
+      placeholder: https://github.com/jdoe/my-project
+    validations:
+      required: false

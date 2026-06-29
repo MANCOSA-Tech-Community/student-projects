@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mancosa-tech-community.github.io/student-projects/schema/project.schema.json",
+  "title": "MANCOSA Tech Community project metadata",
+  "description": "Metadata for a single project. One project.json per project folder. The 'github' field must equal the folder's username prefix (enforced by scripts/validate_projects.py).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "author", "github", "year", "category", "tags", "summary", "links"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Display title of the project."
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "Author's display name."
+    },
+    "github": {
+      "type": "string",
+      "pattern": "^[a-z\\d](?:[a-z\\d]|-(?=[a-z\\d])){0,38}$",
+      "description": "Author's GitHub username (lowercase). Must equal the folder's prefix before '--'."
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 2000,
+      "maximum": 2100,
+      "description": "Year the project was created or last meaningfully updated."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["AI/ML", "Data Science", "Web/Mobile", "Automation", "Other"],
+      "description": "Single primary category."
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 30
+      },
+      "maxItems": 12,
+      "uniqueItems": true,
+      "description": "Free-form keywords for search and filtering."
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 140,
+      "description": "One-line description, 140 characters or fewer."
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "demo": { "$ref": "#/$defs/urlOrEmpty" },
+        "repo": { "$ref": "#/$defs/urlOrEmpty" },
+        "video": { "$ref": "#/$defs/urlOrEmpty" }
+      },
+      "description": "Optional external links. Each is an http(s) URL or an empty string."
+    }
+  },
+  "$defs": {
+    "urlOrEmpty": {
+      "type": "string",
+      "pattern": "^(https?://[^\\s]+|)$"
+    }
+  }
+}

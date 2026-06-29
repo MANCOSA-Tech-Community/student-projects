@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MANCOSA Tech Community — Student Projects</title>
+  <meta name="description" content="A student-run showcase of projects built by the MANCOSA tech community." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="kicker">MANCOSA Tech Community</p>
+      <h1 class="site-title">Student&nbsp;projects, in&nbsp;the&nbsp;open.</h1>
+      <p class="lede">
+        Projects built by students, published and improved entirely through pull
+        requests. Every folder here is one student's work.
+      </p>
+
+      <!-- Signature: the repo's folder convention rendered as a live shell prompt. -->
+      <div class="prompt" aria-hidden="true">
+        <span class="prompt-path">mancosa-tech</span>
+        <span class="prompt-sigil">~$</span>
+        <span class="prompt-cmd">ls projects/</span>
+        <span class="prompt-cursor"></span>
+      </div>
+
+      <p class="badge-studentrun">Student-run · not an official MANCOSA channel</p>
+    </div>
+  </header>
+
+  <nav class="controls wrap" aria-label="Filter projects">
+    <div class="search-field">
+      <label class="visually-hidden" for="search">Search projects</label>
+      <input
+        id="search"
+        type="search"
+        class="search-input"
+        placeholder="Search by title, author, tag…"
+        autocomplete="off"
+      />
+    </div>
+    <div id="category-filters" class="chips" role="group" aria-label="Filter by category"></div>
+  </nav>
+
+  <main id="projects" class="wrap">
+    <p id="result-count" class="result-count" role="status" aria-live="polite"></p>
+
+    <div id="loading" class="state">Loading projects…</div>
+    <div id="error" class="state state-error" hidden>
+      Couldn't load the project index. Try refreshing the page.
+    </div>
+    <div id="empty" class="state" hidden>
+      No projects match your filters. <button type="button" class="link-button" id="clear-filters">Clear filters</button>
+    </div>
+
+    <ul id="grid" class="grid" hidden></ul>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-cta">
+        Want your project here?
+        <a href="https://github.com/MANCOSA-Tech-Community/student-projects/blob/main/CONTRIBUTING.md">Open a pull request →</a>
+      </p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/MANCOSA-Tech-Community/student-projects">Repository</a></li>
+        <li><a href="https://github.com/MANCOSA-Tech-Community/student-projects/blob/main/GOVERNANCE.md">Governance</a></li>
+        <li><a href="https://github.com/MANCOSA-Tech-Community/student-projects/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+      </ul>
+      <p class="footer-fine">Built and maintained by students. Not affiliated with or endorsed by MANCOSA.</p>
+    </div>
+  </footer>
+
+  <!-- Card markup template, cloned per project by app.js. -->
+  <template id="card-template">
+    <li class="card">
+      <a class="card-handle" data-handle href="#"></a>
+      <h2 class="card-title" data-title></h2>
+      <p class="card-meta">
+        <span data-author></span>
+        <span class="card-meta-sep">/</span>
+        <span data-year></span>
+        <span class="card-cat" data-category></span>
+      </p>
+      <p class="card-summary" data-summary></p>
+      <ul class="card-tags" data-tags aria-label="Tags"></ul>
+      <div class="card-links" data-links></div>
+    </li>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+name: Improve an existing project
+description: Suggest an improvement to a project already in the showcase.
+title: "[Improve] <project folder>: <short description>"
+labels: ["improvement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please open this issue **before** submitting a pull request, so the
+        change can be discussed with the maintainer and the original author.
+  - type: input
+    id: project
+    attributes:
+      label: Which project?
+      description: The folder name under projects/, e.g. jdoe--weather-app.
+      placeholder: jdoe--weather-app
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: What would you change?
+      description: Describe the improvement concretely.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why is it worth doing?
+      description: The benefit — a bug fixed, clarity gained, a feature added.
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope
+      options:
+        - label: I will limit my pull request to this one project's folder.
+          required: true

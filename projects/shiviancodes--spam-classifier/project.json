@@ -1,0 +1,14 @@
+{
+  "title": "Spam Classifier",
+  "author": "Shivian Naidoo",
+  "github": "shiviancodes",
+  "year": 2026,
+  "category": "AI/ML",
+  "tags": ["nlp", "scikit-learn", "classification", "tf-idf"],
+  "summary": "An SMS spam detector using TF-IDF features and a Naive Bayes classifier, with a small command-line demo.",
+  "links": {
+    "demo": "",
+    "repo": "https://github.com/shiviancodes/spam-classifier",
+    "video": ""
+  }
+}

@@ -1,0 +1,3 @@
+# Dependencies for the repository tooling (validator + site build).
+# Pinned so local runs and CI never drift. build_site.py is stdlib-only.
+jsonschema>=4,<5

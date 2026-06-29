@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: How to contribute
+    url: https://github.com/MANCOSA-Tech-Community/student-projects/blob/main/CONTRIBUTING.md
+    about: Step-by-step guide for submitting or improving a project.
+  - name: Questions & discussion
+    url: https://github.com/MANCOSA-Tech-Community/student-projects/discussions
+    about: Ask a question or chat with the community.

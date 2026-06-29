@@ -1,0 +1,50 @@
+name: validate
+
+# Runs on every pull request. Uses the `pull_request` trigger (NOT
+# `pull_request_target`) and requests no secrets, so code from untrusted fork
+# PRs can never reach anything sensitive. This is a hard security rule.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Validate project folders
+        run: python scripts/validate_projects.py
+
+      - name: Secret scan (gitleaks binary, no license required)
+        run: |
+          # Use the open-source gitleaks BINARY directly. The gitleaks GitHub
+          # Action requires a paid GITLEAKS_LICENSE for organisations and its
+          # secret would be unavailable to fork PRs anyway. The binary needs
+          # neither a license nor any secret, so it is safe on fork PRs.
+          set -euo pipefail
+          version="$(curl -sSL https://api.github.com/repos/gitleaks/gitleaks/releases/latest \
+            | grep -oP '"tag_name":\s*"v\K[^"]+')"
+          echo "Using gitleaks v${version}"
+          curl -sSL -o gitleaks.tar.gz \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${version}/gitleaks_${version}_linux_x64.tar.gz"
+          tar -xzf gitleaks.tar.gz gitleaks
+          ./gitleaks dir . --no-banner --redact --exit-code 1
+
+      - name: Markdown lint (advisory, non-blocking)
+        continue-on-error: true
+        run: |
+          npx --yes markdownlint-cli2 "**/*.md" "#**/node_modules" || true

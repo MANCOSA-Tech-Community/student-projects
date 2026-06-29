@@ -1,0 +1,14 @@
+{
+  "title": "Your Project Title",
+  "author": "Your Name",
+  "github": "your-username",
+  "year": 2026,
+  "category": "Other",
+  "tags": ["tag-one", "tag-two"],
+  "summary": "One sentence describing what your project does (max 140 characters).",
+  "links": {
+    "demo": "",
+    "repo": "",
+    "video": ""
+  }
+}
