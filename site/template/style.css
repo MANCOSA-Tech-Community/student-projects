@@ -63,31 +63,42 @@ a { color: var(--emerald); }
 }
 .skip-link:focus { left: 0; }
 
-/* ---------- Header ---------- */
-.site-header {
+/* ---------- Dark shell: brand bar + hero share one continuous background ---------- */
+.hero-shell {
   background:
     radial-gradient(120% 140% at 100% 0%, rgba(159, 232, 112, 0.12), transparent 55%),
     var(--ink);
   color: var(--paper);
-  padding: 56px 0 52px;
   border-bottom: 3px solid var(--emerald);
 }
 
-.hero-logo {
-  display: block;
-  height: 52px;
-  width: auto;
-  margin: 0 0 22px;
+/* Slim brand mark at the very top — identity, not navigation. */
+.brand-bar { padding: 12px 0 0; }
+.brand-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
-
-.kicker {
+.brand-logo {
+  display: block;
+  height: 44px;
+  width: auto;
+  flex-shrink: 0;
+  /* The mark has ~15.5% transparent padding baked in; pull left so its visible
+     edge lines up with the headline's left edge (≈0.155 × 44px display ≈ 7px). */
+  margin-left: -7px;
+}
+.brand-name {
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   font-size: 0.72rem;
+  line-height: 1; /* hug the glyphs so it optically centers against the mark */
   color: var(--citron);
-  margin: 0 0 14px;
+  white-space: nowrap;
 }
+
+.hero { padding: 26px 0 52px; }
 
 .site-title {
   font-family: var(--font-display);
@@ -441,8 +452,10 @@ a { color: var(--emerald); }
 /* ---------- Responsive ---------- */
 @media (max-width: 600px) {
   .wrap { padding: 0 18px; }
-  .site-header { padding: 40px 0 34px; }
-  .hero-logo { height: 44px; margin-bottom: 18px; }
+  .brand-bar { padding: 10px 0 0; }
+  .brand-logo { height: 36px; margin-left: -6px; } /* match the smaller display size */
+  .brand-name { font-size: 0.68rem; letter-spacing: 0.12em; }
+  .hero { padding: 20px 0 34px; }
   .controls { flex-direction: column; align-items: stretch; }
   /* Stop the 280px flex-basis becoming a vertical height in column layout. */
   .search-field { flex: 0 1 auto; }
