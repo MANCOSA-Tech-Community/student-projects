@@ -1,7 +1,3 @@
-# local scaffolding / setup docs — not part of the repo
-/IMPLEMENTATION_PLAN.md
-/CLAUDE_CODE_PROMPT.md
-
 # Generated build artifacts (never commit — built fresh on deploy)
 /index.json
 /_site/
