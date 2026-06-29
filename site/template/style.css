@@ -115,6 +115,42 @@ a { color: var(--emerald); }
 }
 @keyframes blink { 50% { opacity: 0; } }
 
+/* Hero call-to-action + live counts. */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.cta-submit {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--citron);
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cta-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(159, 232, 112, 0.22);
+}
+.cta-submit:focus-visible {
+  outline: 3px solid var(--citron);
+  outline-offset: 3px;
+}
+
+.hero-stats {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #9fb0a4;
+  margin: 0;
+}
+
 .badge-studentrun {
   font-family: var(--font-mono);
   font-size: 0.74rem;

@@ -18,6 +18,7 @@
     search: document.getElementById("search"),
     categoryFilters: document.getElementById("category-filters"),
     clearFilters: document.getElementById("clear-filters"),
+    heroStats: document.getElementById("hero-stats"),
     template: document.getElementById("card-template"),
   };
 
@@ -35,6 +36,7 @@
       .then(function (data) {
         state.projects = (data && data.projects) || [];
         hide(els.loading);
+        renderStats();
         buildCategoryFilters(data && data.categories);
         bindControls();
         render();
@@ -43,6 +45,26 @@
         hide(els.loading);
         show(els.error);
       });
+  }
+
+  // Live hero counts: total projects and distinct contributors (by github handle).
+  function renderStats() {
+    if (!els.heroStats) return;
+    var projects = state.projects;
+    var n = projects.length;
+    if (n === 0) {
+      els.heroStats.textContent = "No projects yet — be the first.";
+      return;
+    }
+    var contributors = {};
+    projects.forEach(function (p) {
+      var gh = (p.github || "").trim().toLowerCase();
+      if (gh) contributors[gh] = true;
+    });
+    var c = Object.keys(contributors).length;
+    els.heroStats.textContent =
+      n + " project" + (n === 1 ? "" : "s") + " · " +
+      c + " contributor" + (c === 1 ? "" : "s");
   }
 
   function buildCategoryFilters(categories) {

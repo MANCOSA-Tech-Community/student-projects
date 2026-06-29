@@ -27,8 +27,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 PROJECTS_DIR = REPO_ROOT / "projects"
 TEMPLATE_DIR = REPO_ROOT / "site" / "template"
+ASSETS_DIR = REPO_ROOT / "assets"
 INDEX_PATH = REPO_ROOT / "index.json"
 SITE_DIR = REPO_ROOT / "_site"
+
+# Shipped to the site root so the Open Graph preview can reference an absolute URL.
+BANNER_NAME = "MANCOSA_Banner.png"
 
 TEMPLATE_NAME = "_template"
 # GitHub blob/tree URL prefix so each card can link to its source folder.
@@ -78,6 +82,14 @@ def assemble_site(index: dict) -> None:
     (SITE_DIR / "index.json").write_text(
         json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
+
+    # Banner lives in assets/ (single source of truth) — copy it into the site root
+    # so the Open Graph image URL resolves on the deployed Pages site.
+    banner = ASSETS_DIR / BANNER_NAME
+    if banner.is_file():
+        shutil.copy2(banner, SITE_DIR / BANNER_NAME)
+    else:
+        print(f"warning: banner not found at {banner}", file=sys.stderr)
 
 
 def main() -> int:
