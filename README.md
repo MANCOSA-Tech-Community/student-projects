@@ -1,81 +1,91 @@
-# MANCOSA Tech Community — Student Projects
+<p align="center">
+  <a href="https://mancosa-tech-community.github.io/student-projects/">
+    <img src="assets/MANCOSA_Banner.png" alt="MANCOSA Tech Community" width="100%">
+  </a>
+</p>
 
-[![Validate](https://github.com/MANCOSA-Tech-Community/student-projects/actions/workflows/validate.yml/badge.svg)](https://github.com/MANCOSA-Tech-Community/student-projects/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-0B5D3B.svg)](LICENSE)
+<h1 align="center">MANCOSA Tech Community - Student Projects</h1>
 
-A student-run showcase of projects built by the MANCOSA tech community. Students
-publish their own work and improve each other's — entirely through git pull
-requests. Every accepted project appears on the public showcase site, generated
-automatically from this repository.
+<p align="center">
+  A student-run showcase of projects built by the MANCOSA tech community.<br>
+  Submit your own work or improve someone else's &mdash; all through pull requests.
+</p>
 
-**🌐 Live showcase:** https://mancosa-tech-community.github.io/student-projects/
+<p align="center">
+  <a href="https://mancosa-tech-community.github.io/student-projects/"><strong>Browse the live showcase &raquo;</strong></a>
+</p>
 
-> **Student-run, not an official MANCOSA channel.** This is a community project
-> maintained by students. It is not operated or endorsed by MANCOSA.
+<p align="center">
+  <a href="https://github.com/MANCOSA-Tech-Community/student-projects/actions/workflows/validate.yml">
+    <img src="https://github.com/MANCOSA-Tech-Community/student-projects/actions/workflows/validate.yml/badge.svg" alt="validate">
+  </a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-0B5D3B.svg" alt="License: MIT"></a>
+  <img src="https://img.shields.io/badge/contributions-welcome-9FE870.svg" alt="Contributions welcome">
+  <a href="CODE_OF_CONDUCT.md"><img src="https://img.shields.io/badge/code%20of%20conduct-be%20kind-5E6B63.svg" alt="Code of conduct"></a>
+</p>
+
+<p align="center"><sub><strong>Student-run · not an official MANCOSA channel</strong></sub></p>
 
 ---
 
-## How it works
+## What this is
 
-Each project lives in its own self-contained folder under `projects/`, named
-`<github-username>--<project-slug>/`. There is **no central list to edit** — the
-showcase index is generated from the project folders at build time. That single
-decision is what lets dozens of people contribute at once without their pull
-requests colliding on the same file.
+A shared, public home for projects built by MANCOSA students and alumni in tech &mdash;
+data science, machine learning, AI, software development, DevOps, and everything around it.
 
-```
-projects/
-├── _template/                     # copy this to start a new project
-└── shiviancodes--spam-classifier/ # one folder per project
-    ├── README.md                  # human-readable write-up
-    └── project.json               # machine-readable metadata
-```
-
-Every pull request is automatically validated (folder naming, required files,
-metadata schema, file-size limits) before a maintainer reviews it.
+Every project lives in its own folder. You publish your work, browse and learn from
+everyone else's, and improve each other's projects the way professional software teams
+do: through reviewed pull requests. Each merged project also appears on the
+**[live showcase site](https://mancosa-tech-community.github.io/student-projects/)** &mdash;
+a real, public link you can put on your CV.
 
 ## Contribute
 
-Two ways to get involved — both are plain git, no special tools:
+Two ways in, both through a pull request. Full step-by-step commands are in
+**[CONTRIBUTING.md](CONTRIBUTING.md)** &mdash; the short version:
 
-1. **Add your own project** — fork, copy the template, fill it in, open a PR.
-2. **Improve an existing project** — open an issue to discuss, then fork and PR.
+**Submit a new project**
+1. Fork this repo.
+2. Copy `projects/_template/` to `projects/<your-github-username>--<project-slug>/`.
+3. Fill in the `README.md` and `project.json` inside it.
+4. Open a pull request. Automated checks run, then it's reviewed and merged.
 
-Full step-by-step commands are in **[CONTRIBUTING.md](CONTRIBUTING.md)**. You can
-validate your work locally before pushing:
+**Improve an existing project**
+1. Open an issue to discuss the change.
+2. Fork, edit only that project's folder, open a pull request.
 
-```bash
-python scripts/validate_projects.py
+> Before pushing, you can run the same checks locally that CI runs:
+> `pip install -r scripts/requirements.txt && python scripts/validate_projects.py`
+
+## How it works
+
+- **One folder per project**, named `<github-username>--<slug>` so two people never collide.
+- **No hand-edited project list.** The showcase index is generated automatically from
+  each project's `project.json` at build time &mdash; so contributors never fight over a shared file.
+- **`main` is protected.** Every change lands via a reviewed PR that passes automated checks.
+
+## Repository structure
+
+```
+student-projects/
+├── projects/            # one self-contained folder per student project
+│   └── _template/       # copy this to start your own
+├── schema/              # the project.json contract that CI enforces
+├── scripts/             # validation + site-build tooling
+├── site/                # the showcase site (built and deployed automatically)
+└── .github/             # PR/issue templates, CODEOWNERS, CI workflows
 ```
 
-## Project contract (the short version)
+## Community guidelines
 
-- Folder: `projects/<your-github-username>--<slug>/` (slug is lowercase-hyphenated).
-- Required files: `README.md` and `project.json`.
-- `project.json` must match [`schema/project.schema.json`](schema/project.schema.json);
-  its `github` field must equal your folder's username prefix.
-- No file over **5 MB**. Link large datasets and model weights — don't commit them.
-
-## Repository layout
-
-| Path | Purpose |
-|------|---------|
-| `projects/` | Self-contained project folders — the only place you add files. |
-| `schema/` | The JSON Schema every `project.json` must satisfy. |
-| `scripts/` | Validation (CI) and site-build tooling. |
-| `site/` | Framework-free showcase template (rendered at deploy). |
-| `setup/` | One-time admin setup (ruleset + governance script). |
-| `.github/` | Issue/PR templates, CODEOWNERS, CI workflows. |
-
-## Governance
-
-A single maintainer reviews, approves, and merges all pull requests. See
-**[GOVERNANCE.md](GOVERNANCE.md)** for the review process and how to propose
-becoming a future maintainer. All participation is covered by our
-**[Code of Conduct](CODE_OF_CONDUCT.md)**.
+Be kind, give credit, submit your own work. See **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)**.
+How the project is run and reviewed is documented in **[GOVERNANCE.md](GOVERNANCE.md)**.
 
 ## License
 
-Repository tooling and documentation are released under the [MIT License](LICENSE).
-Each project remains the work of its author; check a project's own README for any
-additional terms.
+Released under the [MIT License](LICENSE). You keep ownership of your work; others can
+learn from it.
+
+---
+
+<p align="center"><sub>Built by and for MANCOSA students. Not affiliated with or endorsed by MANCOSA.</sub></p>
