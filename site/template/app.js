@@ -15,6 +15,8 @@
     loading: document.getElementById("loading"),
     error: document.getElementById("error"),
     empty: document.getElementById("empty"),
+    emptyIndex: document.getElementById("empty-index"),
+    retry: document.getElementById("retry"),
     search: document.getElementById("search"),
     categoryFilters: document.getElementById("category-filters"),
     clearFilters: document.getElementById("clear-filters"),
@@ -27,7 +29,18 @@
   function show(el) { if (el) el.hidden = false; }
   function hide(el) { if (el) el.hidden = true; }
 
+  var booted = false; // guard against re-binding controls / re-adding chips on retry
+
   function init() {
+    if (els.retry) {
+      els.retry.addEventListener("click", load);
+    }
+    load();
+  }
+
+  function load() {
+    show(els.loading);
+    hide(els.error);
     fetch("index.json", { cache: "no-cache" })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
@@ -37,8 +50,11 @@
         state.projects = (data && data.projects) || [];
         hide(els.loading);
         renderStats();
-        buildCategoryFilters(data && data.categories);
-        bindControls();
+        if (!booted) {
+          buildCategoryFilters(data && data.categories);
+          bindControls();
+          booted = true;
+        }
         render();
       })
       .catch(function () {
@@ -125,23 +141,30 @@
   }
 
   function render() {
+    var total = state.projects.length;
     var visible = state.projects.filter(matches);
     els.grid.textContent = "";
+    hide(els.empty);
+    hide(els.emptyIndex);
 
-    if (visible.length === 0) {
+    if (total === 0) {
+      // Nothing published yet — distinct from "no matches for your filters".
+      hide(els.grid);
+      show(els.emptyIndex);
+    } else if (visible.length === 0) {
       hide(els.grid);
       show(els.empty);
     } else {
-      hide(els.empty);
       visible.forEach(function (p) { els.grid.appendChild(card(p)); });
       show(els.grid);
     }
 
-    var total = state.projects.length;
     els.count.textContent =
-      visible.length === total
-        ? total + " project" + (total === 1 ? "" : "s")
-        : visible.length + " of " + total + " project" + (total === 1 ? "" : "s");
+      total === 0
+        ? ""
+        : visible.length === total
+          ? total + " project" + (total === 1 ? "" : "s")
+          : visible.length + " of " + total + " project" + (total === 1 ? "" : "s");
   }
 
   function card(p) {

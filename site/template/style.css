@@ -12,11 +12,17 @@
   --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
 
+  --radius-sm: 8px;
   --radius: 12px;
+  --radius-pill: 999px;
   --maxw: 1100px;
 }
 
 * { box-sizing: border-box; }
+
+/* Author display rules (.grid) outrank the UA [hidden] style, so hide() on a
+   grid would otherwise have no effect. Make hidden authoritative. */
+[hidden] { display: none !important; }
 
 html { -webkit-text-size-adjust: 100%; }
 
@@ -63,8 +69,15 @@ a { color: var(--emerald); }
     radial-gradient(120% 140% at 100% 0%, rgba(159, 232, 112, 0.12), transparent 55%),
     var(--ink);
   color: var(--paper);
-  padding: 56px 0 48px;
+  padding: 56px 0 52px;
   border-bottom: 3px solid var(--emerald);
+}
+
+.hero-logo {
+  display: block;
+  height: 52px;
+  width: auto;
+  margin: 0 0 22px;
 }
 
 .kicker {
@@ -100,7 +113,7 @@ a { color: var(--emerald); }
   font-size: 0.95rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(159, 232, 112, 0.3);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 10px 16px;
 }
 .prompt-path { color: var(--citron); }
@@ -132,13 +145,14 @@ a { color: var(--emerald); }
   background: var(--citron);
   text-decoration: none;
   padding: 11px 20px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 .cta-submit:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 22px rgba(159, 232, 112, 0.22);
 }
+.cta-submit:active { transform: translateY(0); box-shadow: none; }
 .cta-submit:focus-visible {
   outline: 3px solid var(--citron);
   outline-offset: 3px;
@@ -177,7 +191,7 @@ a { color: var(--emerald); }
   font-size: 1rem;
   padding: 12px 16px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--card);
   color: var(--ink);
 }
@@ -198,13 +212,14 @@ a { color: var(--emerald); }
   font-size: 0.8rem;
   padding: 7px 13px;
   border: 1px solid var(--line);
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   background: var(--card);
   color: var(--slate);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition: border-color 0.15s, color 0.15s, background 0.15s, transform 0.1s;
 }
 .chip:hover { border-color: var(--emerald); color: var(--emerald); }
+.chip:active { transform: scale(0.97); }
 .chip[aria-pressed="true"] {
   background: var(--emerald);
   border-color: var(--emerald);
@@ -229,6 +244,7 @@ a { color: var(--emerald); }
   padding: 48px 0;
   text-align: center;
 }
+.state p { margin: 0 0 16px; }
 .state-error { color: #a23b2d; }
 
 .link-button {
@@ -240,6 +256,50 @@ a { color: var(--emerald); }
   cursor: pointer;
   text-decoration: underline;
 }
+.link-button:focus-visible {
+  outline: 2px solid var(--citron);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.btn-retry {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--paper);
+  background: var(--emerald);
+  border: none;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-retry:hover { background: var(--emerald-deep); }
+.btn-retry:focus-visible {
+  outline: 3px solid var(--citron);
+  outline-offset: 2px;
+}
+
+/* Skeleton placeholders shown while index.json loads. */
+.card-skeleton {
+  gap: 12px;
+  pointer-events: none;
+}
+.sk {
+  display: block;
+  background: linear-gradient(90deg, #eef1ee 25%, #e3e8e3 37%, #eef1ee 63%);
+  background-size: 400% 100%;
+  border-radius: 6px;
+  animation: sk-shimmer 1.4s ease infinite;
+}
+.sk-handle { width: 45%; height: 11px; }
+.sk-title { width: 70%; height: 22px; margin-top: 4px; }
+.sk-line { width: 100%; height: 12px; }
+.sk-short { width: 60%; }
+@keyframes sk-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
 
 /* ---------- Grid + cards ---------- */
 .grid {
@@ -247,7 +307,7 @@ a { color: var(--emerald); }
   margin: 0 0 64px;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 20px;
 }
 
@@ -277,6 +337,11 @@ a { color: var(--emerald); }
 }
 .card-handle::before { content: "▸ "; color: var(--emerald); }
 .card-handle:hover { color: var(--emerald); border-bottom-color: var(--emerald); }
+.card-handle:focus-visible {
+  outline: 2px solid var(--citron);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 .card-title {
   font-family: var(--font-display);
@@ -345,6 +410,11 @@ a { color: var(--emerald); }
   text-decoration: none;
 }
 .card-links a:hover { text-decoration: underline; }
+.card-links a:focus-visible {
+  outline: 2px solid var(--citron);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -370,9 +440,13 @@ a { color: var(--emerald); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 600px) {
+  .wrap { padding: 0 18px; }
   .site-header { padding: 40px 0 34px; }
+  .hero-logo { height: 44px; margin-bottom: 18px; }
   .controls { flex-direction: column; align-items: stretch; }
-  .prompt { font-size: 0.82rem; }
+  /* Stop the 280px flex-basis becoming a vertical height in column layout. */
+  .search-field { flex: 0 1 auto; }
+  .prompt { font-size: 0.82rem; max-width: 100%; overflow: hidden; }
 }
 
 @media (prefers-reduced-motion: reduce) {

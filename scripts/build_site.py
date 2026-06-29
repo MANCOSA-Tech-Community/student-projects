@@ -31,8 +31,14 @@ ASSETS_DIR = REPO_ROOT / "assets"
 INDEX_PATH = REPO_ROOT / "index.json"
 SITE_DIR = REPO_ROOT / "_site"
 
-# Shipped to the site root so the Open Graph preview can reference an absolute URL.
-BANNER_NAME = "MANCOSA_Banner.png"
+# Files copied from assets/ into the site root so they resolve on the deployed
+# Pages site: the banner backs the Open Graph preview; the two logos back the
+# hero mark (transparent) and the favicon / apple-touch-icon (green tile).
+SITE_ASSETS = [
+    "MANCOSA_Banner.png",
+    "mancosa_icon_trans.png",
+    "mancosa_icon.png",
+]
 
 TEMPLATE_NAME = "_template"
 # GitHub blob/tree URL prefix so each card can link to its source folder.
@@ -83,13 +89,14 @@ def assemble_site(index: dict) -> None:
         json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
 
-    # Banner lives in assets/ (single source of truth) — copy it into the site root
-    # so the Open Graph image URL resolves on the deployed Pages site.
-    banner = ASSETS_DIR / BANNER_NAME
-    if banner.is_file():
-        shutil.copy2(banner, SITE_DIR / BANNER_NAME)
-    else:
-        print(f"warning: banner not found at {banner}", file=sys.stderr)
+    # assets/ is the single source of truth — copy each shipped asset into the
+    # site root. Warn (don't fail) on a missing file so a build still completes.
+    for name in SITE_ASSETS:
+        asset = ASSETS_DIR / name
+        if asset.is_file():
+            shutil.copy2(asset, SITE_DIR / name)
+        else:
+            print(f"warning: asset not found at {asset}", file=sys.stderr)
 
 
 def main() -> int:

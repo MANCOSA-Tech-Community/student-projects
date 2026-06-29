@@ -6,7 +6,9 @@
   <title>MANCOSA Tech Community — Student Projects</title>
   <meta name="description" content="A student-run showcase of projects built by the MANCOSA tech community." />
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <!-- Green-tile mark fills the tab square better than the transparent version. -->
+  <link rel="icon" href="mancosa_icon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="mancosa_icon.png" />
 
   <!-- Open Graph / Twitter Card — banner preview when the link is shared. -->
   <meta property="og:type" content="website" />
@@ -29,6 +31,8 @@
 
   <header class="site-header">
     <div class="wrap">
+      <!-- White mark on the dark hero only — never on a light section. -->
+      <img class="hero-logo" src="mancosa_icon_trans.png" alt="" width="52" height="52" decoding="async" />
       <p class="kicker">MANCOSA Tech Community</p>
       <h1 class="site-title">Student&nbsp;projects, in&nbsp;the&nbsp;open.</h1>
       <p class="lede">
@@ -70,12 +74,22 @@
   <main id="projects" class="wrap">
     <p id="result-count" class="result-count" role="status" aria-live="polite"></p>
 
-    <div id="loading" class="state">Loading projects…</div>
+    <!-- Skeleton placeholders so the first paint isn't a blank screen. -->
+    <ul id="loading" class="grid" aria-hidden="true">
+      <li class="card card-skeleton"><span class="sk sk-handle"></span><span class="sk sk-title"></span><span class="sk sk-line"></span><span class="sk sk-line sk-short"></span></li>
+      <li class="card card-skeleton"><span class="sk sk-handle"></span><span class="sk sk-title"></span><span class="sk sk-line"></span><span class="sk sk-line sk-short"></span></li>
+      <li class="card card-skeleton"><span class="sk sk-handle"></span><span class="sk sk-title"></span><span class="sk sk-line"></span><span class="sk sk-line sk-short"></span></li>
+    </ul>
     <div id="error" class="state state-error" hidden>
-      Couldn't load the project index. Try refreshing the page.
+      <p>Couldn't load the project index.</p>
+      <button type="button" class="btn-retry" id="retry">Try again</button>
     </div>
     <div id="empty" class="state" hidden>
       No projects match your filters. <button type="button" class="link-button" id="clear-filters">Clear filters</button>
+    </div>
+    <div id="empty-index" class="state" hidden>
+      No projects published yet.
+      <a href="https://github.com/MANCOSA-Tech-Community/student-projects/blob/main/CONTRIBUTING.md">Be the first — open a pull request →</a>
     </div>
 
     <ul id="grid" class="grid" hidden></ul>
